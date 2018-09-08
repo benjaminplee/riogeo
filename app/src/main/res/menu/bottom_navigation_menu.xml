@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/nav_geofences"
+        android:icon="@drawable/ic_place"
+        android:title="Geofences" />
+
+    <item
+        android:id="@+id/nav_events"
+        android:icon="@drawable/ic_messages"
+        android:title="Events" />
+
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/ic_map"
+        android:title="Map" />
+
+</menu>
