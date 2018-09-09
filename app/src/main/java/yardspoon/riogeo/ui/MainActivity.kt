@@ -32,7 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showGeofencesScreen() {
-
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.screen_container, GeofencesFragment())
+                .commit()
     }
 
     private fun showEventsScreen() {
