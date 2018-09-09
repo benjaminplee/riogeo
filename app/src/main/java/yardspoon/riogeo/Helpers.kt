@@ -1,6 +1,7 @@
 package yardspoon.riogeo
 
-inline fun consume(f: () -> Unit): Boolean {
-    f()
-    return true
-}
+inline val (() -> Any).asTheTruth: Boolean
+    get() {
+        this()
+        return true
+    }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import yardspoon.riogeo.R
-import yardspoon.riogeo.consume
+import yardspoon.riogeo.asTheTruth
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_settings -> consume { showSettings() }
-                R.id.nav_geofences -> consume { showGeofencesScreen() }
-                R.id.nav_events -> consume { showEventsScreen() }
-                R.id.nav_map -> consume { showMapScreen() }
+                R.id.nav_settings -> ::showSettings.asTheTruth
+                R.id.nav_geofences -> ::showGeofencesScreen.asTheTruth
+                R.id.nav_events -> ::showEventsScreen.asTheTruth
+                R.id.nav_map -> ::showMapScreen.asTheTruth
                 else -> false
             }
         }
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSettings() {
-
+        ::showGeofencesScreen
     }
 
     private fun showGeofencesScreen() {
