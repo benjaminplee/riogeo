@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSettings() {
-        ::showGeofencesScreen
+        
     }
 
     private fun showGeofencesScreen() {
