@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        bottom_navigation.setOnNavigationItemReselectedListener {}
+
         if (savedInstanceState == null) {
             bottom_navigation.selectedItemId = R.id.nav_geofences
         }
