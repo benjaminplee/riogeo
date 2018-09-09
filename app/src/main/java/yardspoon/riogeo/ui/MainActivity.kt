@@ -30,7 +30,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSettings() {
-        
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.screen_container, SettingsFragment())
+                .commit()
     }
 
     private fun showGeofencesScreen() {
@@ -41,10 +44,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showEventsScreen() {
-
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.screen_container, EventsFragment())
+                .commit()
     }
 
     private fun showMapScreen() {
-
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.screen_container, MapFragment())
+                .commit()
     }
 }
