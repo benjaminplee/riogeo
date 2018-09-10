@@ -1,6 +1,6 @@
 package yardspoon.riogeo
 
-inline val (() -> Any).asTheTruth: Boolean
+inline val (() -> Unit?).asTheTruth: Boolean
     get() {
         this()
         return true

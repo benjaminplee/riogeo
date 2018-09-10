@@ -2,6 +2,7 @@ package yardspoon.riogeo.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import yardspoon.riogeo.R
 import yardspoon.riogeo.asTheTruth
@@ -14,10 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_settings -> ::showSettings.asTheTruth
-                R.id.nav_geofences -> ::showGeofencesScreen.asTheTruth
-                R.id.nav_events -> ::showEventsScreen.asTheTruth
-                R.id.nav_map -> ::showMapScreen.asTheTruth
+                R.id.nav_settings -> { swapScreen(SettingsFragment()) }.asTheTruth
+                R.id.nav_geofences -> { swapScreen(GeofencesFragment()) }.asTheTruth
+                R.id.nav_events -> { swapScreen(EventsFragment()) }.asTheTruth
+                R.id.nav_map -> { swapScreen(MapFragment()) }.asTheTruth
                 else -> false
             }
         }
@@ -29,31 +30,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSettings() {
+    private fun swapScreen(fragment: Fragment) {
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.screen_container, SettingsFragment())
-                .commit()
-    }
-
-    private fun showGeofencesScreen() {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.screen_container, GeofencesFragment())
-                .commit()
-    }
-
-    private fun showEventsScreen() {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.screen_container, EventsFragment())
-                .commit()
-    }
-
-    private fun showMapScreen() {
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.screen_container, MapFragment())
+                .replace(R.id.screen_container, fragment)
                 .commit()
     }
 }
