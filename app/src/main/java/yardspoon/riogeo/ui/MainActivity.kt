@@ -15,10 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_settings -> { swapScreen(SettingsFragment()) }.asTheTruth
-                R.id.nav_geofences -> { swapScreen(GeofencesFragment()) }.asTheTruth
-                R.id.nav_events -> { swapScreen(EventsFragment()) }.asTheTruth
-                R.id.nav_map -> { swapScreen(MapFragment()) }.asTheTruth
+                R.id.nav_settings -> ::showSettings.asTheTruth
+                R.id.nav_geofences -> ::showGeofencesScreen.asTheTruth
+                R.id.nav_events -> ::showEventsScreen.asTheTruth
+                R.id.nav_map -> ::showMapScreen.asTheTruth
                 else -> false
             }
         }
@@ -28,6 +28,22 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             bottom_navigation.selectedItemId = R.id.nav_geofences
         }
+    }
+
+    private fun showSettings() {
+        swapScreen(SettingsFragment())
+    }
+
+    private fun showGeofencesScreen() {
+        swapScreen(GeofencesFragment())
+    }
+
+    private fun showEventsScreen() {
+        swapScreen(EventsFragment())
+    }
+
+    private fun showMapScreen() {
+        swapScreen(MapFragment())
     }
 
     private fun swapScreen(fragment: Fragment) {
