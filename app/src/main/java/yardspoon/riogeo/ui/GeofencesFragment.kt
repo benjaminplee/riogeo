@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -55,10 +56,16 @@ private class GeofenceListAdapter : ListAdapter<Geofence, GeofenceListAdapter.Vi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
             holder.bind(getItem(position))
 
-    private class ViewHolder(view: View, val nameView: TextView = view.name) : RecyclerView.ViewHolder(view) {
+    private class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        private val nameView: TextView = view.item_name
+        private val detailsView: TextView = view.item_details
+        private val image: ImageView = view.item_image
+
         fun bind(geofence: Geofence) {
             geofence.apply {
                 nameView.text = "$id - $name"
+                detailsView.text = "${radius}m @ ${latitude}, ${longitude}"
             }
         }
     }
