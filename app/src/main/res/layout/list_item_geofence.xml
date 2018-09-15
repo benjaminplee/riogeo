@@ -1,52 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_container"
     android:layout_width="match_parent"
     android:layout_height="72dp">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/item_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="100dp"
         android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@android:color/darker_gray"
-        android:src="@drawable/skeleton_geofence_thumbnail" />
+        android:contentDescription="image of geofence area"
+        android:src="@drawable/skeleton_geofence_thumbnail"
+        app:layout_constraintBottom_toBottomOf="@id/item_container"
+        app:layout_constraintLeft_toLeftOf="@id/item_container"
+        app:layout_constraintTop_toTopOf="@id/item_container" />
 
     <TextView
         android:id="@+id/item_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/item_image"
+        android:layout_marginStart="16dp"
+        android:maxLines="1"
         android:textColor="@color/darkGray"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/item_guideline"
+        app:layout_constraintLeft_toRightOf="@id/item_image"
         tools:text="The Arch" />
 
     <TextView
         android:id="@+id/item_details"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_name"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/item_image"
+        android:layout_marginStart="16dp"
+        android:maxLines="1"
         android:textColor="@color/mediumGray"
         android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@id/item_image"
+        app:layout_constraintTop_toBottomOf="@id/item_guideline"
         tools:text="100.5 meters @ -90.123, 45.456" />
 
     <ImageView
         android:id="@+id/item_action"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
         android:layout_marginEnd="16dp"
+        android:contentDescription="geofence action button"
         android:src="@drawable/ic_chevron"
-        android:tint="@color/darkGray" />
+        android:tint="@color/darkGray"
+        app:layout_constraintBottom_toBottomOf="@id/item_container"
+        app:layout_constraintRight_toRightOf="@id/item_container"
+        app:layout_constraintTop_toTopOf="@id/item_container" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
