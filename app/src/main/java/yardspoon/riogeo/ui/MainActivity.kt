@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import yardspoon.riogeo.R
-import yardspoon.riogeo.asTheTruth
+import yardspoon.riogeo.misc.asTheTruth
 
 class MainActivity : AppCompatActivity() {
 

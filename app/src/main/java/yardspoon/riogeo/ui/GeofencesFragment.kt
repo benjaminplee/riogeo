@@ -17,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import yardspoon.riogeo.R
 import yardspoon.riogeo.biz.GeofencesViewModel
 import yardspoon.riogeo.data.Geofence
+import yardspoon.riogeo.misc.makeVisisbleIf
 
 class GeofencesFragment : Fragment() {
 
@@ -36,11 +37,11 @@ class GeofencesFragment : Fragment() {
         }
 
         add_fab.setOnClickListener {
-
+            geofencesViewModel.add(Geofence(0, "foo", 1.0, 2.0, 3.0F, 100L, 1))
         }
 
         geofencesViewModel.data.observe(this, Observer { fences ->
-//            empty_message.visibility = if (fences.isEmpty()) View.VISIBLE else View.GONE
+            empty_message.makeVisisbleIf(fences.isEmpty())
             geofenceListAdapter.submitList(fences)
         })
     }
