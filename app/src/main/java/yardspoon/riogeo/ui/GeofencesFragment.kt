@@ -20,7 +20,7 @@ import yardspoon.riogeo.data.Geofence
 
 class GeofencesFragment : Fragment() {
 
-    val geofencesViewModel: GeofencesViewModel by viewModel()
+    private val geofencesViewModel: GeofencesViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_geofences, container, false)
@@ -40,7 +40,7 @@ class GeofencesFragment : Fragment() {
         }
 
         geofencesViewModel.data.observe(this, Observer { fences ->
-            empty_message.visibility = if (fences.isEmpty()) View.VISIBLE else View.GONE
+//            empty_message.visibility = if (fences.isEmpty()) View.VISIBLE else View.GONE
             geofenceListAdapter.submitList(fences)
         })
     }

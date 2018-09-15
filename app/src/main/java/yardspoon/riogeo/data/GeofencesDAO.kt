@@ -1,5 +1,6 @@
 package yardspoon.riogeo.data
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
@@ -16,6 +17,6 @@ interface GeofencesDAO {
     fun delete(geofence: Geofence)
 
     @Query("SELECT * FROM $TABLE_NAME_GEOFENCE ORDER BY id ASC")
-    fun selectAll(): MutableLiveData<List<Geofence>>
+    fun selectAll(): LiveData<List<Geofence>>
 
 }
