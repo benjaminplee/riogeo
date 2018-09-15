@@ -34,8 +34,11 @@
         android:maxLines="1"
         android:textColor="@color/darkGray"
         android:textSize="16sp"
+        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@id/item_guideline"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toRightOf="@id/item_image"
+        app:layout_constraintRight_toLeftOf="@id/item_action"
         tools:text="The Arch" />
 
     <TextView
@@ -46,9 +49,12 @@
         android:maxLines="1"
         android:textColor="@color/mediumGray"
         android:textSize="12sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toRightOf="@id/item_image"
+        app:layout_constraintRight_toLeftOf="@id/item_action"
         app:layout_constraintTop_toBottomOf="@id/item_guideline"
-        tools:text="100.5 meters @ -90.123, 45.456" />
+        tools:text="100.5 meters @ -90.123123, 45.456123123" />
 
     <ImageView
         android:id="@+id/item_action"
