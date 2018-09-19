@@ -12,7 +12,7 @@ import yardspoon.riogeo.R
 
 class CreateActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,11 +23,13 @@ class CreateActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        map = googleMap.apply {
+            isMyLocationEnabled = true
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            val sydney = LatLng(-34.0, 151.0)
+            addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+            moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        }
     }
+
 }
