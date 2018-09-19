@@ -30,21 +30,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSettings() {
-        swapScreen(SettingsFragment())
-    }
-
-    private fun showGeofencesScreen() {
-        swapScreen(GeofencesFragment())
-    }
-
-    private fun showEventsScreen() {
-        swapScreen(EventsFragment())
-    }
-
-    private fun showMapScreen() {
-        swapScreen(MapFragment())
-    }
+    private fun showSettings() = swapScreen(SettingsFragment())
+    private fun showGeofencesScreen() = swapScreen(GeofencesFragment())
+    private fun showEventsScreen() = swapScreen(EventsFragment())
+    private fun showMapScreen() = swapScreen(MapFragment())
 
     private fun swapScreen(fragment: Fragment) {
         supportFragmentManager

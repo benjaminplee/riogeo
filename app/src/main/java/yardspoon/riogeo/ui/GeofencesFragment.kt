@@ -1,5 +1,6 @@
 package yardspoon.riogeo.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,7 +39,8 @@ class GeofencesFragment : Fragment() {
         }
 
         add_fab.setOnClickListener {
-            geofencesViewModel.add(Geofence(0, "foo", 1.0, 2.0, 3.0F, 100L, 1))
+            startActivity(Intent(context, CreateActivity::class.java))
+//            geofencesViewModel.add(Geofence(0, "foo", 1.0, 2.0, 3.0F, 100L, 1))
         }
 
         geofencesViewModel.data.observe(this, Observer { fences ->
