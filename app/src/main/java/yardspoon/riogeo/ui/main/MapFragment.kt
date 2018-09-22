@@ -1,4 +1,4 @@
-package yardspoon.riogeo.ui
+package yardspoon.riogeo.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_geofences.*
 import yardspoon.riogeo.R
 
-class EventsFragment : Fragment() {
+class MapFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_events, container, false)
+        return inflater.inflate(R.layout.fragment_maps, container, false)
     }
 
 }

@@ -1,4 +1,4 @@
-package yardspoon.riogeo.ui
+package yardspoon.riogeo.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -20,6 +20,7 @@ import yardspoon.riogeo.R
 import yardspoon.riogeo.biz.GeofencesViewModel
 import yardspoon.riogeo.data.Geofence
 import yardspoon.riogeo.misc.makeVisisbleIf
+import yardspoon.riogeo.ui.CreateActivity
 
 class GeofencesFragment : Fragment() {
 

@@ -19,7 +19,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,9 +32,9 @@
             android:label="@string/title_activity_create">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="yardspoon.riogeo.ui.MainActivity" />
+                android:value="yardspoon.riogeo.ui.main.MainActivity" />
         </activity>
-        
+
     </application>
 
 </manifest>
