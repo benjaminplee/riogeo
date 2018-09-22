@@ -5,4 +5,6 @@
     <color name="colorAccent">#6300b9</color>
     <color name="darkGray">#de000000</color>
     <color name="mediumGray">#99000000</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
