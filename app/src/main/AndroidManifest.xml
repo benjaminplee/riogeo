@@ -32,9 +32,7 @@
         <activity android:name=".ui.OnboardingActivity" />
         <activity android:name=".ui.main.MainActivity" />
 
-        <activity
-            android:name=".ui.CreateActivity"
-            android:label="@string/title_activity_create">
+        <activity android:name=".ui.CreateActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="yardspoon.riogeo.ui.main.MainActivity" />
