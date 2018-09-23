@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         map:uiCompass="true"
         map:uiRotateGestures="true"
-        map:uiScrollGestures="false"
-        map:uiTiltGestures="false"
+        map:uiScrollGestures="true"
+        map:uiTiltGestures="true"
         map:uiZoomControls="false"
         map:uiZoomGestures="true"
         tools:context=".ui.CreateActivity" />
