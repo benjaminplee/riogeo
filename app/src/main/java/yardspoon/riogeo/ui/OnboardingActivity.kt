@@ -11,28 +11,36 @@ import com.karumi.dexter.listener.single.CompositePermissionListener
 import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener
 import kotlinx.android.synthetic.main.activity_onboarding.*
 import yardspoon.riogeo.R
+import yardspoon.riogeo.misc.permissionNotGiven
 import yardspoon.riogeo.ui.main.MainActivity
 
 class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_onboarding)
 
-        launch.setOnClickListener {
-            Dexter.withActivity(this)
-                    .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                    .withListener(
-                            CompositePermissionListener(
-                                    SnackbarOnDeniedPermissionListener.Builder.with(launch, "Location access is required to monitor geofences.").build(),
-                                    object : BasePermissionListener() {
-                                        override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-                                            launchMainActivity()
+        val locationPermission = Manifest.permission.ACCESS_FINE_LOCATION
+
+        if (permissionNotGiven(locationPermission)) {
+            setContentView(R.layout.activity_onboarding)
+
+            launch.setOnClickListener {
+                Dexter.withActivity(this)
+                        .withPermission(locationPermission)
+                        .withListener(
+                                CompositePermissionListener(
+                                        SnackbarOnDeniedPermissionListener.Builder.with(launch, "Location access is required to monitor geofences.").build(),
+                                        object : BasePermissionListener() {
+                                            override fun onPermissionGranted(response: PermissionGrantedResponse?) {
+                                                launchMainActivity()
+                                            }
                                         }
-                                    }
-                            )
-                    )
-                    .check()
+                                )
+                        )
+                        .check()
+            }
+        } else {
+            launchMainActivity()
         }
     }
 
