@@ -5,6 +5,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.api.Status
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.places.Place
 import com.google.android.gms.location.places.ui.PlaceSelectionListener
 import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment
@@ -18,20 +20,21 @@ import timber.log.Timber
 import yardspoon.riogeo.R
 import yardspoon.riogeo.misc.permissionGiven
 
+private val WHITE_HOUSE_LOC = LatLng(38.8976805, -77.0387185)
+
 class CreateActivity : AppCompatActivity(), OnMapReadyCallback, PlaceSelectionListener {
 
     private lateinit var map: GoogleMap
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
 
-        val mapFragment = findMapFragment()
-        val searchFragment = findAutocompleteSearchFragment()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        searchFragment.setOnPlaceSelectedListener(this)
-
-        mapFragment.getMapAsync(this)
+        findAutocompleteSearchFragment().setOnPlaceSelectedListener(this)
+        findMapFragment().getMapAsync(this)
     }
 
     @SuppressLint("MissingPermission")
@@ -41,9 +44,7 @@ class CreateActivity : AppCompatActivity(), OnMapReadyCallback, PlaceSelectionLi
                 isMyLocationEnabled = true
             }
 
-            val sydney = LatLng(-34.0, 151.0)
-            addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-            moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            zoomMapTo(WHITE_HOUSE_LOC, "White House")
         }
     }
 
@@ -63,3 +64,9 @@ class CreateActivity : AppCompatActivity(), OnMapReadyCallback, PlaceSelectionLi
     private fun findAutocompleteSearchFragment() = supportFragmentManager.findFragmentById(R.id.autocomplete_search) as SupportPlaceAutocompleteFragment
 
 }
+
+private fun GoogleMap.zoomMapTo(location: LatLng, title: String?) {
+    addMarker(MarkerOptions().position(location).title(title))
+    moveCamera(CameraUpdateFactory.newLatLng(location))
+}
+
